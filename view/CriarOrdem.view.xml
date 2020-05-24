@@ -1,0 +1,32 @@
+<mvc:View controllerName="sap.pm.entraprimariav1.controller.CriarOrdem" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page id="page" title="Criar Ordem" showHeader="false">
+				<content>
+					<!--<FlexBox justifyContent="End" class="sapUiLargeMarginEnd">-->
+					<!--	<Button text="Salvar operação" press="onSaveOperacao" type="Emphasized"/>-->
+					<!--</FlexBox>-->
+					<mvc:XMLView viewName="sap.pm.entraprimariav1.view.CabecalhoOrdem"/>
+					<mvc:XMLView viewName="sap.pm.entraprimariav1.view.TableOperacoes"/>
+					<!--<mvc:XMLView viewName="sap.pm.entraprimariav1.view.TableMateriais"/>-->
+					<!--<mvc:XMLView viewName="sap.pm.entraprimariav1.view.Nota"/>-->
+				</content>
+				<footer>
+					<Toolbar>
+						<!--<Button id="buttonImprimir" text="Imprimir" press="onPrint">-->
+						<!--	<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>-->
+						<!--</Button>-->
+						<ToolbarSpacer/>
+						<Button type="Emphasized" text="Salvar" press="onSave">
+							<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+						</Button>
+						<!--<Button text="Cancelar">-->
+						<!--	<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>-->
+						<!--</Button>-->
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,255 @@
+<mvc:View controllerName="sap.pm.entraprimariav1.controller.TableOperacoes" 
+		  xmlns="sap.ui.table"
+		  xmlns:mvc="sap.ui.core.mvc"
+		  xmlns:u="sap.ui.unified"
+		  xmlns:c="sap.ui.core"
+		  xmlns:m="sap.m"
+	      height="100%">
+	
+	<m:Page
+		showHeader="false"
+		enableScrolling="false"
+		class="sapUiContentPadding">
+		<m:content>
+			<Table
+				rows="{/Baixa}"
+				selectionMode="Single"
+				visibleRowCount="8"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar>
+						<m:Title id="title" text="Baixa Pendente"/>
+						<m:ToolbarSpacer />
+						<m:Button icon="sap-icon://filter" press="onFiltrarBaixaPendente" />
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					
+					<!-- INI - Dados da ordem PM -->
+					
+					<Column width="11rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="" />
+							<m:Label text="Data Ordem" tooltip="Data da Ordem" />
+						</multiLabels>
+						<template>
+							<m:DatePicker displayFormat="short" 
+								          value="{dataOrdem}" 
+									      tooltip="Data da Ordem" change="changeDataOrdem" />
+						</template>
+					</Column>
+					<Column width="11rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="" />
+							<m:Label text="Equip." tooltip="Nº do Equipamento" />
+					    </multiLabels>
+						<template>
+							<m:Input value="{frotaCodigo}" 
+									 enabled="true" 
+									 tooltip="Nº do Equipamento" />
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="" />
+							<m:Label text="Ordem" tooltip="Nº da Ordem" />
+						</multiLabels>
+						<template>
+							<m:Input value="{orderid}" 
+									 enabled="false" 
+									 tooltip="Nº da Ordem PM" />
+						</template>
+					</Column>
+					<Column width="15rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="" />
+							<m:Label text="Denominação Obj." tooltip="Denominação do Objeto" />
+						</multiLabels>
+						<template>
+							<m:Input value="{ordemDescricao}" 
+							         enabled="false" 
+							         tooltip="{ordemDescricao}" />
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="" />
+							<m:Label text="Oper." tooltip="Nº da Operação" />
+						</multiLabels>
+						<template>
+							<m:Input value="{operacao}" 
+							         enabled="true" 
+							         tooltip="{textoOperacao}" />
+						</template>
+					</Column>
+					<Column width="15rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="" />
+							<m:Label text="Texto Operação" tooltip="Texto da Operação" />
+						</multiLabels>
+						<template>
+							<m:Input value="{textoOperacao}" 
+							         enabled="false" 
+							         tooltip="{textoOperacao}" />
+						</template>
+					</Column>
+					
+					<!-- FIM - Dados da ordem PM -->
+					
+					<!-- INI - Dados Pendentes da BAIXA DE MATERIAL (MB1A) -->
+					
+					<Column width="6rem" headerSpan="7" hAlign="Center">
+						<multiLabels>
+							<m:Label text="BAIXA DE MATERIAL (MB1A)" />
+							<m:Label text="Item" tooltip="Item da Baixa de Material" />
+						</multiLabels>
+						<template>
+							<m:Input value="{item}" enabled="true" />
+						</template>
+					</Column>
+					<Column width="10rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="BAIXA DE MATERIAL (MB1A)" />
+							<m:Label text="Material" tooltip="Nº do Material" />
+						</multiLabels>
+						<template>
+							<m:Input value="{materialCodigo}" enabled="true" />
+						</template>
+					</Column>
+					<Column width="15rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="BAIXA DE MATERIAL (MB1A)" />
+							<m:Label text="Denominação" tooltip="Texto do Material" />
+						</multiLabels>
+						<template>
+							<m:Input value="{descricaoMaterial}" enabled="false" />
+						</template>
+					</Column>
+					<Column width="12rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="BAIXA DE MATERIAL (MB1A)" />
+							<m:Label text="Qtd.nec." tooltip="Quantidade Necessária" />
+						</multiLabels>
+						<template>
+							<m:Input type="Number" value="{quantidade}" enabled="true" />
+						</template>
+					</Column>
+					<Column width="12rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="BAIXA DE MATERIAL (MB1A)" />
+							<m:Label text="Unid." tooltip="Unidade de Medida" />
+						</multiLabels>
+						<template>
+							<m:Input value="{unidadeMedida}" enabled="false" tooltip="Unidade de tempo" />
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="BAIXA DE MATERIAL (MB1A)" />
+							<m:Label text="Tipo" tooltip="Tipo de Categoria" />
+						</multiLabels>
+						<template>
+							<m:Input value="{tipo}" enabled="false" tooltip="Tipo de Categoria" />
+						</template>
+					</Column>
+					<Column width="11rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="BAIXA DE MATERIAL (MB1A)" />
+							<m:Label text="Dep." tooltip="Depósito do Material" />
+						</multiLabels>
+						<template>
+							<!--<m:ComboBox selectedKey="{path: '/codigoDeposito'}" -->
+							<!--            showSecondaryValues="true" -->
+							<!--            items="{path: 'ListasAuxiliaresLocal>/depositos'}" -->
+							<!--            value="{/descricaoDeposito}" -->
+							<!--            enabled="{= ${/codigoMaterial} ? true : false }">-->
+							<!--	<c:ListItem key="{ListasAuxiliaresLocal>Lgort}" -->
+							<!--	            text="{ListasAuxiliaresLocal>Lgort}" -->
+							<!--	            additionalText="{ListasAuxiliaresLocal>Labst}" />-->
+							<!--</m:ComboBox>-->
+							<m:ComboBox value="{codigoDeposito'}" items="{depositos}" enabled="{codigoMaterial ? true : false }">
+								<c:ListItem text="{descricaoDeposito}" />
+							</m:ComboBox>
+						</template>
+					</Column>
+					
+					<!-- FIM - Dados Pendentes da BAIXA DE MATERIAL (MB1A) -->
+					
+					<!-- INI - Dados Pendentes dos APONTAMENTOS (IW41) -->
+					
+					<Column width="10rem" headerSpan="7" hAlign="Center">
+						<multiLabels>
+							<m:Label text="APONTAMENTOS (IW41)" />
+							<m:Label text="Data Início" tooltip="Data Início do Trabalho" />
+						</multiLabels>
+						<template>
+							<m:DatePicker displayFormat="short" 
+								          value="{dataIni}" 
+									      tooltip="Data Início do Trabalho" change="changeDataInicioTrabalho" />
+						</template>
+					</Column>
+					<Column width="10rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="APONTAMENTOS (IW41)" />
+							<m:Label text="Hora Início" tooltip="Hora Início do Trabalho" />
+						</multiLabels>
+						<template>
+							<m:TimePicker value="{horaIni}" tooltip="Hora Início do Trabalho" change="changeHoraInicioTrabalho" />
+						</template>
+					</Column>
+					<Column width="10rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="APONTAMENTOS (IW41)" />
+							<m:Label text="Data Fim" tooltip="Data Fim do Trabalho" />
+						</multiLabels>
+						<template>
+							<m:DatePicker displayFormat="short" 
+								          value="{dataFim}" 
+									      tooltip="Data Fim do Trabalho" change="changeDataFimTrabalho" />
+						</template>
+					</Column>
+					<Column width="12rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="APONTAMENTOS (IW41)" />
+							<m:Label text="Hora Fim" tooltip="Hora Fim do Trabalho" />
+						</multiLabels>
+						<template>
+							<m:TimePicker value="{horaFim}" tooltip="Hora Fim do Trabalho" change="changeHoraFimTrabalho" />
+						</template>
+					</Column>
+					<Column width="12rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="APONTAMENTOS (IW41)" />
+							<m:Label text="Duração" tooltip="Horas de Duração da Parada" />
+						</multiLabels>
+						<template>
+							<m:Input type="Number" value="{duracaoParada}" enabled="false" tooltip="Duração da parada" />
+						</template>
+					</Column>
+					<Column width="6rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="APONTAMENTOS (IW41)" />
+							<m:Label text="Unid." tooltip="Unidade de Duração da Parada" />
+						</multiLabels>
+						<template>
+							<m:Input value="{unidadeParada}" enabled="false" tooltip="Unidade de tempo" />
+						</template>
+					</Column>
+					<Column width="11rem" hAlign="Center">
+						<multiLabels>
+							<m:Label text="APONTAMENTOS (IW41)" />
+							<m:Label text="Controle" tooltip="Nº Pessoal" />
+						</multiLabels>
+						<template>
+							<m:Input type="Number" value="{controleCodigo}" change="changeControleCodigo" valueState="{validControle}" />
+						</template>
+					</Column>
+					
+					<!-- FIM - Dados Pendentes dos APONTAMENTOS (IW41) -->
+					
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>	
+	
+</mvc:View>
